@@ -14,8 +14,7 @@ std::vector<Token> tokenize(const std::string& text) {
 	    char currc = c;
 	    while (std::isalpha(currc)) {
 		buf.push_back(currc);
-		++i;
-		currc = text[i];
+		currc = text[++i];
 	    }
 	    found.push_back(Token(TokenType::WORD, buf));
 	}
@@ -26,12 +25,10 @@ std::vector<Token> tokenize(const std::string& text) {
 
 	else if (c == '\"' or c == '\'') {
 	    std::string buf;
-	    ++i;
-	    char currc = text[i];
+	    char currc = text[++i];
 	    while (currc != '\"' and currc != '\'') {
 	        buf.push_back(currc);
-		++i;
-		currc = text[i];
+		currc = text[++i];
 	    }
 
 	    found.push_back(Token(TokenType::STRING, buf));
@@ -43,18 +40,15 @@ std::vector<Token> tokenize(const std::string& text) {
 	    TokenType type = INTEGER;
 	    while (std::isdigit(currc)) {
 		buf.push_back(currc);
-		++i;
-		currc = text[i];
+		currc = text[++i];
 	    }
 	    if (currc == '.') {
 		type = FLOAT;
 		buf.push_back('.');
-		++i;
-		currc = text[i];
+		currc = text[++i];
 		while (std::isdigit(currc)) {
 		    buf.push_back(currc);
-		    ++i;
-		    currc = text[i];
+		    currc = text[++i];
 		}
 	    }
 

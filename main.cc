@@ -15,7 +15,6 @@ int main(int argc, char** argv) {
     std::stringstream s;
     s << f.rdbuf();
     std::string str = s.str();
-    std::cout << str << std::endl;
     auto a = tokenize(str);
     for (const auto& t: a) {
 	std::cout << t << std::endl;
